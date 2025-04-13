@@ -3,14 +3,16 @@
   "editor.formatOnSave": true,
   "editor.bracketPairColorization.enabled": true,
   "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+  "files.associations": { "*.css": "tailwindcss" },
   "editor.codeActionsOnSave": {
-    "source.fixAll": true
+    "source.organizeImports": "explicit",
+    "source.fixAll": "explicit"
   },
-  "eslint.validate": [
-    "javascript",
-    "javascriptreact",
-    "astro",
-    "typescript",
-    "typescriptreact"
-  ]
+  "eslint.validate": ["javascript", "javascriptreact", "astro", "typescript", "typescriptreact"],
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[astro]": {
+    "editor.defaultFormatter": "astro-build.astro-vscode"
+  }
 }

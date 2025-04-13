@@ -1,67 +1,98 @@
+@import '@fontsource-variable/inter' layer(base);
+@import '@fontsource-variable/newsreader' layer(base);
+@import '@fontsource-variable/newsreader/wght-italic.css' layer(base);
+
+@import 'tailwindcss';
+@plugin '@tailwindcss/typography';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --text-main: #171717;
+  --bg-main: #f2f1ec;
+  --bg-muted: #eae9e1;
+  --border-main: #171717;
+}
+html.dark {
+  --text-main: #f2f1ec;
+  --bg-main: #171717;
+  --bg-muted: #242424;
+  --border-main: #f2f1ec;
+}
+
+/* Cyan */
 /*
-  The CSS in this style tag is based off of Bear Blog's default CSS.
-  https://github.com/HermanMartinus/bearblog/blob/297026a877bc2ab2b3bdfbd6b9f7961c350917dd/templates/styles/blog/default.css
-  License MIT: https://github.com/HermanMartinus/bearblog/blob/master/LICENSE.md
- */
-body {
-  font-family: Verdana, sans-serif;
-  margin: auto;
-  padding: 20px;
-  max-width: 65ch;
-  text-align: left;
-  background-color: #fff;
-  word-wrap: break-word;
-  overflow-wrap: break-word;
-  line-height: 1.5;
-  color: #444;
+:root {
+    --text-main: #162a2b;
+    --bg-main: #d6e0e2;
+    --bg-muted: #ccd8db;
+    --border-main: #162a2b;
 }
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-strong,
-b {
-  color: #222;
+html.dark {
+    --text-main: #d6e0e2;
+    --bg-main: #162a2b;
+    --bg-muted: #1c3537;
+    --border-main: #d6e0e2;
 }
-a {
-  color: #3273dc;
+*/
+
+/* Green */
+/*
+:root {
+    --text-main: #3a4238;
+    --bg-main: #f3efe6;
+    --bg-muted: #eee9dc;
+    --border-main: #3a4238;
 }
-nav a {
-  margin-right: 10px;
+html.dark {
+    --text-main: #f3efe6;
+    --bg-main: #5e6c5b;
+    --bg-muted: #596756;
+    --border-main: #f3efe6;
 }
-textarea {
-  width: 100%;
-  font-size: 16px;
+*/
+
+@theme inline {
+  --font-sans: 'Inter Variable', sans-serif;
+  --font-serif: 'Newsreader Variable', serif;
+  --text-color-main: var(--text-main);
+  --background-color-main: var(--bg-main);
+  --background-color-muted: var(--bg-muted);
+  --border-color-main: var(--border-main);
 }
-input {
-  font-size: 16px;
-}
-content {
-  line-height: 1.6;
-}
-table {
-  width: 100%;
-}
-img {
-  max-width: 100%;
-  height: auto;
-}
-code {
-  padding: 2px 5px;
-  background-color: #f2f2f2;
-}
-pre {
-  padding: 1rem;
-}
-pre > code {
-  all: unset;
-}
-blockquote {
-  border: 1px solid #999;
-  color: #222;
-  padding: 2px 0px 2px 20px;
-  margin: 0px;
-  font-style: italic;
+
+@layer utilities {
+  .prose {
+    --tw-prose-body: var(--text-color-main);
+    --tw-prose-headings: var(--text-color-main);
+    --tw-prose-lead: var(--text-color-main);
+    --tw-prose-links: var(--text-color-main);
+    --tw-prose-bold: var(--text-color-main);
+    --tw-prose-counters: var(--text-color-main);
+    --tw-prose-bullets: var(--text-color-main);
+    --tw-prose-hr: var(--border-color-main);
+    --tw-prose-quotes: var(--text-color-main);
+    --tw-prose-quote-borders: var(--border-color-main);
+    --tw-prose-captions: var(--text-color-main);
+    --tw-prose-kbd: var(--text-color-main);
+    --tw-prose-code: var(--text-color-main);
+    --tw-prose-th-borders: var(--border-color-main);
+    --tw-prose-td-borders: var(--border-color-main);
+  }
+
+  .prose a {
+    @apply font-normal underline decoration-dashed decoration-1 underline-offset-2 hover:decoration-solid;
+  }
+
+  .prose :where(h1, h2, h3, h4, h5, h6) {
+    @apply font-serif font-medium;
+  }
+
+  .prose :where(code, strong) {
+    @apply font-medium;
+  }
+
+  .prose blockquote {
+    @apply border-none pl-0 font-serif text-[1.375em] leading-snug font-normal italic sm:text-[1.66667em];
+  }
 }

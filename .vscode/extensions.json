@@ -1,4 +1,9 @@
 {
-  "recommendations": ["dbaeumer.vscode-eslint", "astro-build.astro-vscode"],
+  "recommendations": [
+    "dbaeumer.vscode-eslint",
+    "Gruntfuggly.todo-tree",
+    "bradlc.vscode-tailwindcss",
+    "astro-build.astro-vscode"
+  ],
   "unwantedRecommendations": []
 }

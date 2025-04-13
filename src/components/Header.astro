@@ -1,24 +1,18 @@
 ---
-import HeaderLink from "./HeaderLink.astro";
-import { SITE_TITLE } from "../consts";
+import siteConfig from '../data/site-config';
 ---
 
-<header>
-  <h2>
-    {SITE_TITLE}
-  </h2>
-  <nav>
-    <HeaderLink href="/">Home</HeaderLink>
-    <HeaderLink href="/blog">Blog</HeaderLink>
-    <HeaderLink href="/about">About</HeaderLink>
-  </nav>
+<header class="mx-auto mb-12 w-full max-w-3xl sm:mb-16">
+  {
+    siteConfig.logo && siteConfig.logo?.src ? (
+      <a href="/">
+        <img src={siteConfig.logo.src} alt={siteConfig.logo.alt || ''} class="max-h-12" />
+      </a>
+    ) : (
+      <a class="text-theme-foreground font-serif text-2xl leading-tight font-medium sm:text-4xl" href="/">
+        {siteConfig.title}
+      </a>
+    )
+  }
+  {siteConfig.subtitle && <p class="mt-1 text-sm leading-tight">{siteConfig.subtitle}</p>}
 </header>
-
-<style>
-  header {
-    margin: 0em 0 2em;
-  }
-  h2 {
-    margin: 0.5em 0;
-  }
-</style>

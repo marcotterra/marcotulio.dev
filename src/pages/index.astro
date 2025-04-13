@@ -1,21 +1,29 @@
 ---
-import BaseHead from "../components/BaseHead.astro";
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
-import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+import { getCollection } from 'astro:content';
+import Button from '../components/Button.astro';
+import PostPreview from '../components/PostPreview.astro';
+import siteConfig from '../data/site-config';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { sortItemsByDateDesc } from '../utils/data-utils';
+
+const posts = (await getCollection('blog')).sort(sortItemsByDateDesc);
+const featuredPosts = posts.filter(({ data }) => data.isFeatured);
+
 ---
 
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-  </head>
-  <body>
-    <Header title={SITE_TITLE} />
-    <main>
-      <h1>🧑‍🚀 Hello, I'm Marco!</h1>
-      <p>This will be my personal blog/portifolio.</p>
-    </main>
-    <Footer />
-  </body>
-</html>
+<BaseLayout description={siteConfig.description} image={siteConfig.image}>
+  <!-- <Hero /> -->
+  {
+    featuredPosts?.length > 0 && (
+      <div class="mb-16 sm:mb-24">
+        <h2 class="mb-12 font-serif text-xl italic sm:mb-16 sm:text-2xl">Writing</h2>
+        {featuredPosts.map((post) => (
+          <PostPreview post={post} class="mb-10 sm:mb-12" headingLevel="h3" />
+        ))}
+        <div class="mt-12 sm:mt-16">
+          <Button href="/blog">View All Posts</Button>
+        </div>
+      </div>
+    )
+  }
+</BaseLayout>
