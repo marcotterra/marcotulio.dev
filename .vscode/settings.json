@@ -2,17 +2,10 @@
   "todo-tree.general.showActivityBarBadge": true,
   "editor.formatOnSave": true,
   "editor.bracketPairColorization.enabled": true,
-  "editor.defaultFormatter": "dbaeumer.vscode-eslint",
   "files.associations": { "*.css": "tailwindcss" },
-  "editor.codeActionsOnSave": {
-    "source.organizeImports": "explicit",
-    "source.fixAll": "explicit"
-  },
-  "eslint.validate": ["javascript", "javascriptreact", "astro", "typescript", "typescriptreact"],
-  "[jsonc]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "editor.codeActionsOnSave": ["source.organizeImports", "source.fixAll"],
   "[astro]": {
     "editor.defaultFormatter": "astro-build.astro-vscode"
-  }
+  },
 }

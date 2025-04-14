@@ -1,10 +1,13 @@
 import eslint from '@eslint/js';
-import eslintConfigPrettier from 'eslint-config-prettier';
 import eslintPluginAstro from 'eslint-plugin-astro';
+import { defineConfig, globalIgnores } from 'eslint/config';
+import tseslint from 'typescript-eslint';
 
-/** @type {import('eslint').Linter.Config} */
-export default [
+export default defineConfig([
   eslint.configs.recommended,
-  eslintConfigPrettier,
+  tseslint.configs.recommended,
   ...eslintPluginAstro.configs.recommended,
-]
+  globalIgnores(['.astro/*', 'dist/*']),
+]);
+
+
